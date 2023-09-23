@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Monaco";
+  font-display: swap;
+  src: url("fonts/monaco.woff");
+}
+
+:root {
+  --terminal-font-color: #b0b2b6;
+  --terminal-output-color: #f6f6f6;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: sans-serif;
+  color: #333d54;
+  background-color: #f6f9fc;
+  background-color: #333d54;
+}
+
+.container2{
+    padding-top: 30px;
+    background: white;
+}
+
+a {
+  color: inherit;
+  transition: color 0.08s linear;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+a {
+  display: inline-flex;
+  position: relative;
+  top: 35px;
+  left: 62px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  background: #0ef;
+  border-radius: 1.8rem;
+  transition: 0.5s ease;
+  margin-bottom: 1rem;
+}
+
+a:hover {
+  box-shadow: 0 0 1rem #0ef;
+}
+
+a i {
+  font-size: 1.4rem;
+  color: #323946;
+}
+
+
+
+
+
+
+
+
+
+/* /////////////////// */
+/* IMAGE SELECTION */
+/* ////////////////// */
+
+.slide-containerfc{
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 25px;
+}
+
+.slide-image img{
+    width: 80%;
+    border-radius: 20px;
+}
+
+.slide-image{
+    padding: 10px;
+}
