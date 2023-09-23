@@ -1,60 +1,64 @@
-from fastapi import FastAPI, UploadFile, File
-import uvicorn
-from PIL import Image
+from fastapi import FastAPI, UploadFile
 from typing import List
 from pydantic import BaseModel
-from tensorflow import keras
-import io
+from tensorflow import keras, stack
+from tensorflow.io import decode_image
+from tensorflow.image import resize
+import time
 
 app = FastAPI()
+# pre-load the model so everything is just faster.
+model = keras.models.load_model("./models/BEST-cnn.keras")
 
 @app.get("/")    # defining the root directory
 async def root():
     return {"message": "hello world manya"}
 
 name1 = "SIH 2023"
-@app.get("/{name}")
-async def name(name : str):
-    return {"message": f"welcome to {name1}"}
+@app.get("/greet/{name}")
+async def name(name: str = name1):
+    return {"message": f"welcome to {name}"}
 
 @app.get("/health")    # just to check if the api is working
 def check_health():
     return {"status": "API is working!!"}
 
 # main project logic -------->
-
 class ImageInput(BaseModel):
     images: List[UploadFile]
+    pincode: str
 
-def load_image(file):
-    image = Image.open(io.BytesIO(file.read()))
-    return image
-
-def preprocess_image(image, target_size=(256, 256)):
-    resized = image.resize(target_size)
-    return resized
-
-@app.get("/predict")
-async def predict(model, images):
-    for i, image in enumerate(images):
-        prediction = model.predict(images)
-    
-    
-
+# make a little function here to postprocess the model's output
+# LABEL and FORMAT tensors correctly :)
+def proprocess(pred):
+    pass
 
 @app.post("/predict/")
-def predict_images(images: ImageInput):
+async def predict_images(request: ImageInput):
     processed_images = []
-    for uploaded_image in images.images:
-        image = load_image(uploaded_image)
-        preprocessed_image = preprocess_image(image)
-        processed_images.append(preprocessed_image)
+    starttime = time.time()
+    for img in request.images:
+        # Read the JSON image data
+        json_image_data = await img.read()
+        # Decode the image from JSON data, and resize
+        image_tensor = decode_image(json_image_data, channels=3)  # Set the number of color channels (3 for RGB)
+        resized_image = resize(image_tensor, target_size=(256, 256))
+        # Append the processed image to the list
+        processed_images.append(resized_image)
 
+    # Convert the list of processed images to a TensorFlow tensor
+    images_tensor = stack(processed_images)
+
+    # get prediction from the model
+    prediction = model.predict(images_tensor)
+    endtime = time.time()
+    ttime = endtime - starttime
+    # replace this with a more elaborate argmax function
+    final_pred = prediction.numpy().tolist()
     
-    # model = load_model("models\BEST-cnn.keras")
-    model = keras.models.load_model('models\cnn-20230923-050016 (Current Best).keras')
+    return {"prediction" : final_pred, 'exectime' : ttime}
 
-    # Predict using the model
-    prediction = predict(model, processed_images)
-
-    return {"prediction": prediction}
+if __name__ == '__main__':
+    # CODE FOR SERVER
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
