@@ -5,10 +5,12 @@ from tensorflow import keras, stack
 from tensorflow.io import decode_image
 from tensorflow.image import resize
 import time
+import csv
+import base64
 
 app = FastAPI()
 # pre-load the model so everything is just faster.
-model = keras.models.load_model("./models/BEST-cnn.keras")
+model = keras.models.load_model("models/BEST-cnn.keras")
 
 origins = [
     "http://localhost.tiangolo.com",
@@ -47,6 +49,11 @@ class ImageInput(BaseModel):
 
 # make a little function here to postprocess the model's output
 # LABEL and FORMAT tensors correctly :)
+def write_to_csv(prediction, ttime, pincode):
+    with open('/predictions.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), prediction, ttime, pincode])
+
 def proprocess(pred):
     pass
 
@@ -72,7 +79,9 @@ async def predict_images(request: ImageInput):
     ttime = endtime - starttime
     # replace this with a more elaborate argmax function
     final_pred = prediction.numpy().tolist()
-    
+
+    write_to_csv(final_pred, ttime, request.pincode)
+
     return {"prediction" : final_pred, 'exectime' : ttime}
 
 if __name__ == '__main__':
