@@ -10,6 +10,23 @@ app = FastAPI()
 # pre-load the model so everything is just faster.
 model = keras.models.load_model("./models/BEST-cnn.keras")
 
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "*.vercel.app"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")    # defining the root directory
 async def root():
     return {"message": "hello world manya"}
