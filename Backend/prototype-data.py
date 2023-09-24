@@ -37,12 +37,12 @@ for _ in range(60):
     total_time = round(random.uniform(10, 500), 2)  # Random total time in milliseconds
     pincode = random.choice(pin_codes)  # Random Indian pin code
     prediction = random.choice(predictions)  # Random prediction from the list
-
+    confidence = random.uniform(93.322, 100) # Random confidence values
     # Append to the rows
-    rows.append([total_time, pincode, prediction])
+    rows.append([total_time, pincode, prediction, confidence])
 
 # Write to CSV
 with open('Backend\predictions.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['Total Time (ms)', 'Pincode', 'Prediction'])
+    writer.writerow(['Total Time (ms)', 'Pincode', 'Prediction', 'Confidence'])
     writer.writerows(rows)

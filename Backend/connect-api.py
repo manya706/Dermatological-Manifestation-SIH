@@ -59,10 +59,10 @@ class ImageInput(BaseModel):
     images: List[UploadFile]
     pincode: str
 
-def write_to_csv(prediction, ttime, pincode):
-    with open('/predictions.csv', mode='a', newline='') as file:
+def write_to_csv(prediction, ttime, pincode, confidence):
+    with open('./predictions.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), prediction, ttime, pincode])
+        writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), prediction, ttime, pincode, confidence])
 
 # make a little function here to postprocess the model's output
 # LABEL and FORMAT tensors correctly :)
@@ -104,17 +104,13 @@ async def predict_images(request: ImageInput):
     ttime = endtime - starttime
     # replace this with a more elaborate argmax function
     final_pred = prediction.numpy().tolist()
-
-    # write_to_csv(final_pred, ttime, request.pincode)
+    write_to_csv(final_pred['label'], ttime, request.pincode, final_pred['confidence'])
 
     return {"prediction" : final_pred, 'exectime' : ttime}
 
 if __name__ == '__main__':
     # CODE FOR DEBUG
-    # from keras.utils import load_img, img_to_array
-    # print(postprocess(model.predict(stack(img_to_array(load_img('./WEBSITE SAMPLES/Acne.jpg', target_size=(256, 256))),
-    #                                  img_to_array(load_img('./WEBSITE SAMPLES/Healthy.jpg', target_size=(256, 256))), axis=0)
-    # )))
+    
     # CODE FOR SERVER
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,107 +1,61 @@
-Total Time (ms),Pincode,Prediction
-276.08,600002,Fungal Infections
-90.24,110001,Poison Ivy or Contact Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201010,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-533.49,201011,Atopic Dermatitis
-533.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-133.49,201011,Atopic Dermatitis
-133.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-233.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-433.49,201011,Atopic Dermatitis
-425.31,110001,"Exanthems, or Drug Eruptions"
-425.31,110001,"Exanthems, or Drug Eruptions"
-425.31,110001,"Exanthems, or Drug Eruptions"
-334.43,560001,"Psoriasis, Lichen Planus or related diseases"
-178.15,400002,Healthy or Benign growth
-349.06,600001,Bacterial Infections
-386.23,110002,Vasculitis Photos
-168.37,600002,Connective Tissue Diseases
-322.28,600001,"Actinic Keratosis, or other Malignant Lesions"
-31.48,400002,Bullous Disease
-153.87,110001,Healthy or Benign growth
-123.75,560001,"Acne, or Rosacea"
-211.76,600002,Healthy or Benign growth
-105.66,110002,Fungal Infections
-93.02,560001,Vascular Tumors
-13.32,400002,Melanoma Skin Cancer Nevi and Moles
-270.9,110001,Systemic Disease
-351.44,400002,"Psoriasis, Lichen Planus or related diseases"
-61.97,110001,"Exanthems, or Drug Eruptions"
-148.79,600002,Eczema
-395.69,560002,"Alopecia, or other Hair Diseases"
-136.52,110001,Systemic Disease
-396.39,700001,"Lyme Diseasem, Infestations and Bites"
-130.4,600002,Vascular Tumors
-497.08,600001,Systemic Disease
-15.93,600001,Melanoma Skin Cancer Nevi and Moles
-195.32,560002,Vasculitis Photos
-395.77,600002,"Acne, or Rosacea"
-474.78,800001,Healthy or Benign growth
-237.52,110002,"Actinic Keratosis, or other Malignant Lesions"
-452.12,600001,"Alopecia, or other Hair Diseases"
-337.5,400002,"Psoriasis, Lichen Planus or related diseases"
-492.21,560002,Urticaria Hives
-354.21,600001,Healthy or Benign growth
-46.36,600002,Atopic Dermatitis
-416.57,110001,Fungal Infections
-12.36,400001,"Lyme Diseasem, Infestations and Bites"
-186.11,400002,"Lyme Diseasem, Infestations and Bites"
-293.66,400001,Poison Ivy or Contact Dermatitis
-293.66,400001,Poison Ivy or Contact Dermatitis
-293.66,400001,Poison Ivy or Contact Dermatitis
-293.66,400001,Poison Ivy or Contact Dermatitis
-293.66,400001,Poison Ivy or Contact Dermatitis
-340.08,400002,"Herpes, HPV, other STDs"
-472.06,560001,Vasculitis Photos
-155.4,600001,Bullous Disease
-305.43,110001,"Lyme Diseasem, Infestations and Bites"
-58.41,600001,Poison Ivy or Contact Dermatitis
-299.24,600001,"Psoriasis, Lichen Planus or related diseases"
-350.56,700001,"Psoriasis, Lichen Planus or related diseases"
-416.28,400002,"Herpes, HPV, other STDs"
-416.28,400002,"Herpes, HPV, other STDs"
-416.28,400002,"Herpes, HPV, other STDs"
-416.28,400002,"Herpes, HPV, other STDs"
-405.45,600001,Vasculitis Photos
-160.86,400001,Fungal Infections
-85.73,600001,"Lyme Diseasem, Infestations and Bites"
-30.75,560001,Connective Tissue Diseases
-376.23,560001,Benign Tumors
-214.2,110001,"Alopecia, or other Hair Diseases"
-250.29,110002,Bullous Disease
-233.68,700001,Bullous Disease
-171.72,560001,Vascular Tumors
-492.6,800001,Urticaria Hives
-492.6,800001,Urticaria Hives
-492.6,800001,Urticaria Hives
-492.6,800001,Urticaria Hives
-492.6,800001,Urticaria Hives
-492.6,800001,Urticaria Hives
-79.32,560002,Urticaria Hives
-406.25,110002,Vascular Tumors
+Total Time (ms),Pincode,Prediction,Confidence
+31.29,800001,Atopic Dermatitis,97.66812680554499
+397.43,700001,Vasculitis Photos,93.4497546505521
+40.82,700001,Bullous Disease,95.66118186753474
+333.39,560001,Bullous Disease,95.94744868236499
+128.42,600002,Nail Fungus or other Nail Disease,94.16378039107157
+405.61,560002,Bullous Disease,98.62881605328548
+62.03,400002,Eczema,93.59614541997612
+299.89,400002,Bacterial Infections,96.50797695885666
+267.5,400001,Connective Tissue Diseases,96.78455847398293
+208.63,560002,Fungal Infections,99.89859477192735
+59.19,600001,"Warts, or other Viral Infections",95.93915466022023
+329.24,800001,"Herpes, HPV, other STDs",94.87485935438151
+33.24,600001,Connective Tissue Diseases,99.21594067976591
+439.42,110002,"Lyme Diseasem, Infestations and Bites",95.02652946718621
+87.51,700001,"Lyme Diseasem, Infestations and Bites",99.66723542262744
+70.88,700001,Benign Tumors,93.88774809134645
+19.46,600002,Benign Tumors,97.54454242006992
+209.65,600002,Bacterial Infections,96.45609498719517
+12.24,600002,"Herpes, HPV, other STDs",96.16962445224218
+202.07,600002,"Actinic Keratosis, or other Malignant Lesions",96.36838275825104
+384.06,700001,Fungal Infections,99.30946878658229
+274.07,700001,Healthy or Benign growth,96.31012300216581
+468.84,700001,"Herpes, HPV, other STDs",95.48613893808228
+495.94,400002,Systemic Disease,96.64036525993731
+498.58,400002,Connective Tissue Diseases,95.4694495127075
+72.67,700001,Fungal Infections,94.95197385295093
+280.09,600002,Melanoma Skin Cancer Nevi and Moles,95.0810236003562
+257.96,110002,Bullous Disease,98.06401760122324
+124.86,560002,"Psoriasis, Lichen Planus or related diseases",98.87668554250473
+58.21,800001,Benign Tumors,99.51434645827923
+275.82,600001,"Herpes, HPV, other STDs",93.41648092414506
+174.4,400001,Connective Tissue Diseases,96.93333377098408
+130.02,400002,Melanoma Skin Cancer Nevi and Moles,97.99403217369769
+197.46,600002,"Actinic Keratosis, or other Malignant Lesions",99.63511842094604
+121.1,400002,Nail Fungus or other Nail Disease,98.57808584738241
+258.99,400002,Vascular Tumors,96.54250567377228
+45.03,560001,Benign Tumors,97.20428553683524
+363.69,700001,Eczema,95.67345909561007
+108.04,560001,Poison Ivy or Contact Dermatitis,98.35357633837837
+498.75,110002,Eczema,98.13396879369367
+304.1,600001,Nail Fungus or other Nail Disease,99.92438640545465
+36.28,560002,"Exanthems, or Drug Eruptions",96.86800749872083
+45.58,800001,Urticaria Hives,99.92647670213114
+13.53,560002,Benign Tumors,93.70096434097127
+460.72,700001,Melanoma Skin Cancer Nevi and Moles,95.28932525175404
+263.7,560002,Fungal Infections,93.80744822327965
+324.38,110002,"Warts, or other Viral Infections",99.03745963758482
+300.12,110001,"Alopecia, or other Hair Diseases",99.07809719681477
+27.51,700001,Bacterial Infections,94.17384112377667
+330.95,400001,Connective Tissue Diseases,97.11353013029695
+106.21,110001,Healthy or Benign growth,99.21913750664649
+86.31,600002,"Psoriasis, Lichen Planus or related diseases",97.65209353815023
+138.57,400002,Fungal Infections,97.09825573026774
+436.58,800001,Fungal Infections,95.48947973306602
+142.15,600001,Atopic Dermatitis,99.20298662426838
+223.95,560002,Nail Fungus or other Nail Disease,95.24159869811487
+103.09,600002,Eczema,99.45948839954755
+129.99,110002,Eczema,97.53046923061315
+263.17,700001,"Psoriasis, Lichen Planus or related diseases",96.71415279541105
+482.85,700001,Nail Fungus or other Nail Disease,96.28122357598282
