@@ -1,7 +1,41 @@
 Total Time (ms),Pincode,Prediction
 276.08,600002,Fungal Infections
 90.24,110001,Poison Ivy or Contact Dermatitis
-433.49,400001,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201010,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+533.49,201011,Atopic Dermatitis
+533.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+133.49,201011,Atopic Dermatitis
+133.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+233.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+433.49,201011,Atopic Dermatitis
+425.31,110001,"Exanthems, or Drug Eruptions"
+425.31,110001,"Exanthems, or Drug Eruptions"
 425.31,110001,"Exanthems, or Drug Eruptions"
 334.43,560001,"Psoriasis, Lichen Planus or related diseases"
 178.15,400002,Healthy or Benign growth
@@ -39,6 +73,10 @@ Total Time (ms),Pincode,Prediction
 12.36,400001,"Lyme Diseasem, Infestations and Bites"
 186.11,400002,"Lyme Diseasem, Infestations and Bites"
 293.66,400001,Poison Ivy or Contact Dermatitis
+293.66,400001,Poison Ivy or Contact Dermatitis
+293.66,400001,Poison Ivy or Contact Dermatitis
+293.66,400001,Poison Ivy or Contact Dermatitis
+293.66,400001,Poison Ivy or Contact Dermatitis
 340.08,400002,"Herpes, HPV, other STDs"
 472.06,560001,Vasculitis Photos
 155.4,600001,Bullous Disease
@@ -46,6 +84,9 @@ Total Time (ms),Pincode,Prediction
 58.41,600001,Poison Ivy or Contact Dermatitis
 299.24,600001,"Psoriasis, Lichen Planus or related diseases"
 350.56,700001,"Psoriasis, Lichen Planus or related diseases"
+416.28,400002,"Herpes, HPV, other STDs"
+416.28,400002,"Herpes, HPV, other STDs"
+416.28,400002,"Herpes, HPV, other STDs"
 416.28,400002,"Herpes, HPV, other STDs"
 405.45,600001,Vasculitis Photos
 160.86,400001,Fungal Infections
@@ -56,6 +97,11 @@ Total Time (ms),Pincode,Prediction
 250.29,110002,Bullous Disease
 233.68,700001,Bullous Disease
 171.72,560001,Vascular Tumors
+492.6,800001,Urticaria Hives
+492.6,800001,Urticaria Hives
+492.6,800001,Urticaria Hives
+492.6,800001,Urticaria Hives
+492.6,800001,Urticaria Hives
 492.6,800001,Urticaria Hives
 79.32,560002,Urticaria Hives
 406.25,110002,Vascular Tumors
