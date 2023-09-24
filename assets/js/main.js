@@ -1,3 +1,43 @@
+function Onclick1() {
+  console.log("Click event detected!"); // Debugging line
+
+  document.querySelector(".homee").innerText="होम";
+  document.querySelector(".aboutee").innerText="अबाउट";
+  document.querySelector(".servicee").innerText="सेवाएं";
+  document.querySelector(".doctorr").innerText="डॉक्टर्स";
+  document.querySelector(".contactt").innerText="संपर्क करें";
+  document.querySelector(".diaggg").innerText="अपनी समस्या का निदान करें";
+
+
+
+
+  var headingElement = document.querySelector(".heading-what-is");
+  headingElement.innerText = "त्वचा संधान क्या है?";
+
+  // var pelt=
+  document.querySelector(".p-what-is").innerText="त्वचा संधान सभी त्वचा संबंधी मुद्दों और त्वचा संबंधी चिंताओं के लिए एक ही स्थान पर निदान है। हमारी प्रक्रिया असाधारण रूप से सरल है, बस अपनी त्वचा की समस्या का एक फोटो लें, संबंधित समस्या चुनें, अपने शहर का पिनकोड दर्ज करें और आप निदान के लिए तैयार हैं।";
+
+  document.querySelector(".easy-to-access").innerText="सभी डिवाइस पर उपलब्ध है";
+  document.querySelector(".easy-to-accessp").innerText="यह वेबएप इस तरह से बनाया गया है कि इसे सभी डिवाइस पर एक्सेस किया जा सकता है";
+
+  document.querySelector(".fast-diag").innerText="त्वरित निदान";
+  document.querySelector(".fast-diagp").innerText="3 क्लिक में विश्वसनीय प्रारंभिक निदान प्राप्त करें";
+
+  document.querySelector(".sudden").innerText="व्यापक निगरानी";
+  document.querySelector(".suddenp").innerText="वेबसाइट विशिष्ट क्षेत्रों में रोग की व्यापकता को ट्रैक और विश्लेषण करने के लिए आपका पोस्टल कोड एकत्र करती है";
+
+  document.querySelector(".Steps-you").innerText="निदान के लिए आपको जिन चरणों का पालन करना होगा";
+  document.querySelector(".Steps-youp").innerText="आपकी त्वचा संबंधी समस्याओं के निदान के लिए नीचे चार आवश्यक चरण बताए गए हैं।";
+
+  document.querySelector(".title1").innerText="नेवबार पर अपनी समस्या का निदान करें बटन पर क्लिक करें";
+  document.querySelector(".title2").innerText="अपनी त्वचा की समस्या का एक फोटो क्लिक करें और इसे तब तक क्रॉप करें जब तक यह अपलोडर बॉक्स में पूरी तरह फिट न हो जाए";
+  document.querySelector(".title3").innerText="छवि के बगल में रेडियो बटन का चयन करें जो आपकी त्वचा की समस्या से सबसे अच्छी तरह मेल खाता हो!";
+  document.querySelector(".title4").innerText="टेक्स्ट बॉक्स में अपने शहर का पिनकोड दर्ज करें और सबमिट बटन दबाएं";
+
+
+
+}
+
 (function() {
   "use strict";
 
