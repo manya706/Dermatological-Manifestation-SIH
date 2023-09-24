@@ -87,8 +87,8 @@ for disease, color in disease_to_color.items():
     filtered_data = df_grouped[df_grouped['Prediction'] == disease]
     fig_map.add_trace(
         go.Densitymapbox(
-            lat=filtered_data['Pincode'],  # Use Pincode for latitude
-            lon=filtered_data['Prediction'],  # Use Prediction for longitude
+            lat=,  # Use Pincode for latitude
+            lon=,  # Use Prediction for longitude
             z=filtered_data['Count'],
             radius=50,
             colorscale='Viridis',
