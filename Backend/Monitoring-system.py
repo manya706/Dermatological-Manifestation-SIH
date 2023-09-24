@@ -16,7 +16,7 @@ st.title("Monitoring System Visualization")
 if selected_page == "Request Time Graph":
     st.write('\n\n')
     st.header("Request Time Graph")
-
+    df = pd.read_csv('./Backend/predictions.csv')
     fig_time_line = px.line(df, x=df.index, y='Total Time (ms)', title='Request Time Line Plot')
     fig_time_line.update_traces(line=dict(color='blue'))
     fig_time_line.update_layout(
@@ -38,7 +38,7 @@ if selected_page == "Request Time Graph":
 elif selected_page == "Diseases by Pincode":
     st.write('\n\n')
     st.header("Diseases by Pincode")
-
+    df = pd.read_csv('./Backend/predictions.csv')
     pincode = st.text_input("Enter Pincode", "")
     pincode = int(pincode) if pincode.isdigit() and len(pincode) == 6 else None
 
@@ -61,7 +61,7 @@ elif selected_page == "Diseases by Pincode":
 elif selected_page == "Confidence Line Chart of Predictions":
     st.write('\n\n')
     st.header("Confidence Line Chart of Predictions")
-
+    df = pd.read_csv('./Backend/predictions.csv')
     confidence_fig = px.line(df, x=df.index,y='Confidence', title='Confidence Line Chart')
     confidence_fig.update_traces(marker_color='cyan')
     confidence_fig.update_layout(

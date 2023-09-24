@@ -104,10 +104,11 @@ fetch("assets/img/WEBSITE_SAMPLES/" + selectedImage)
         contentType: false,
         success: function (response) {
             // Handle the response from the server
-            console.log("Label:", response.prediction.label);
-            console.log("Confidence:", response.prediction.confidence);
-            console.log("Execution Time:", response.exectime);
-    
+                    // Display the output in the "output" <p> element
+        $(".output").html(
+          "Label: " + response.prediction.label + "<br>" +
+          "Confidence: " + response.prediction.confidence + "<br>" +
+          "Execution Time: " + response.exectime);
         },
         error: function (error) {
             // Handle any errors
