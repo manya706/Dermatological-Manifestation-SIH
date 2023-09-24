@@ -71,7 +71,7 @@ def postprocess(pred, labellist=labellist, weight=0.85):
     conf_arr = amax(pred, axis=1)
     confidence = conf_arr[0]*weight + conf_arr[1]*(1 - weight)
     label = labellist[arg]
-    final_pred = {'label' : label, 'confidence' : confidence}
+    final_pred = {'label' : label, 'confidence' : confidence*100}
 
     # write_to_csv(final_pred, request.pincode) 
     return final_pred
