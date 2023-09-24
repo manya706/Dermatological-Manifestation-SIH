@@ -68,42 +68,53 @@ $("#imageSelectionForm").on("submit", function (e) {
   // alert("2");
   e.preventDefault();
 
-  // Create an array to hold image1 and image2
-  var imagesArray = [];
+// Create an array to hold image1 and image2
+var imagesArray = [];
 
-  // Add image1 to the array
-  imagesArray.push($(".item-img")[0].files[0]); // Uploaded image
+// Add image1 to the array
+imagesArray.push($(".item-img")[0].files[0]); // Uploaded image
 
-  // Add image2 to the array
-  var selectedImage = $("input[name='selectedImage']:checked").val(); // Selected image
-  imagesArray.push(selectedImage);
-
-  // Create a FormData object to store the images array and pincode
-  var formData = new FormData();
-
-  // Append the images array to the FormData
-  formData.append("images", JSON.stringify(imagesArray));
-
-  // Add the pincode separately to the FormData
-  var pincode = $("#pincode").val();
-  formData.append("pincode", pincode);
-
-  // Send the FormData object to the server via a POST request
-  $.ajax({
-    url: "/your-api-endpoint-url", // Replace with your FastAPI endpoint URL
-    type: "POST",
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function (response) {
-      // Handle the response from the server
-      console.log(response);
-    },
-    error: function (error) {
-      // Handle any errors
-      console.error(error);
-    },
+// Fetch the selected image file based on its filename
+var selectedImage = $("input[name='selectedImage']:checked").val();
+fetch("assets/img/WEBSITE_SAMPLES/" + selectedImage)
+  .then(response => response.blob())
+  .then(blob => {
+    // Create a new File object from the blob for image2
+    var selectedImageFile = new File([blob], selectedImage);
+    
+    // Add image2 to the array
+    imagesArray.push(selectedImageFile);
+    
+    // Create a FormData object to store the images array and pincode
+    var formData = new FormData();
+    
+    // Append the images array to the FormData
+    formData.append("images", ...imagesArray);
+    
+    // Add the pincode separately to the FormData
+    var pincode = $("#pincode").val();
+    formData.append("pincode", pincode);
+    
+    // Send the FormData object to the server via a POST request
+    $.ajax({
+        url: "http://localhost:8000/form-predict", // Replace with your FastAPI endpoint URL
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            // Handle the response from the server
+            console.log(response);
+        },
+        error: function (error) {
+            // Handle any errors
+            console.error(error);
+        },
+    });
   });
+
+    // },
+  // });
 });
 
 // ... Remaining JavaScript code ...
