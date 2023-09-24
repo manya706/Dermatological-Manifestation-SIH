@@ -1,10 +1,10 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from typing import List
+from typing import List, Annotated
 from pydantic import BaseModel
 from tensorflow import keras, stack
 from tensorflow.io import decode_image
-from tensorflow.image import resize
+from tensorflow import image
 import time
 from numpy import argmax, amax
 import csv
@@ -56,18 +56,18 @@ def check_health():
 
 # main project logic -------->
 class ImageInput(BaseModel):
-    images: List[UploadFile]
+    images: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")]
     pincode: str
 
 def write_to_csv(prediction, ttime, pincode, confidence):
-    with open('./predictions.csv', mode='a', newline='') as file:
+    with open('./Backend/predictions.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), prediction, ttime, pincode, confidence])
 
 # make a little function here to postprocess the model's output
 # LABEL and FORMAT tensors correctly :)
 def postprocess(pred, labellist=labellist, weight=0.85):
-    arg = argmax(pred.numpy(), axis=1)[0]
+    arg = argmax(pred, axis=1)[0]
     conf_arr = amax(pred, axis=1)
     confidence = conf_arr[0]*weight + conf_arr[1]*(1 - weight)
     label = labellist[arg]
@@ -75,10 +75,6 @@ def postprocess(pred, labellist=labellist, weight=0.85):
 
     # write_to_csv(final_pred, request.pincode) 
     return final_pred
-
-
-def proprocess(pred):
-    pass
 
 @app.post("/predict/")
 async def predict_images(request: ImageInput):
@@ -90,7 +86,36 @@ async def predict_images(request: ImageInput):
         json_image_data = await img.read()
         # Decode the image from JSON data, and resize
         image_tensor = decode_image(json_image_data, channels=3)  # Set the number of color channels (3 for RGB)
-        resized_image = resize(image_tensor, target_size=(256, 256))
+        resized_image = image.resize(image_tensor, size=(256, 256))
+        # Append the processed image to the list
+        processed_images.append(resized_image)
+
+    # Convert the list of processed images to a TensorFlow tensor
+    images_tensor = stack(processed_images)
+    # get prediction from the model
+    prediction = model.predict(images_tensor)
+    endtime = time.time() # stopwatch stop
+    ttime = endtime - starttime
+    # replace this with a more elaborate argmax function
+    final_pred = postprocess(prediction)
+    write_to_csv(final_pred['label'], ttime, request.pincode, final_pred['confidence'])
+
+    return {"prediction" : final_pred, 'exectime' : ttime}
+
+@app.post("/uploadfiles/")
+async def form_predict(
+    files: Annotated[
+        list[UploadFile], File(description="Multiple files as UploadFile")],
+    pincode: str):
+    processed_images = []
+    starttime = time.time() # stopwatch start
+    
+    for img in files:
+        # Read the JSON image data
+        json_image_data = await img.read()
+        # Decode the image from JSON data, and resize
+        image_tensor = decode_image(json_image_data, channels=3)  # Set the number of color channels (3 for RGB)
+        resized_image = image.resize(image_tensor, size=(256, 256))
         # Append the processed image to the list
         processed_images.append(resized_image)
 
@@ -103,8 +128,8 @@ async def predict_images(request: ImageInput):
     
     ttime = endtime - starttime
     # replace this with a more elaborate argmax function
-    final_pred = prediction.numpy().tolist()
-    write_to_csv(final_pred['label'], ttime, request.pincode, final_pred['confidence'])
+    final_pred = postprocess(prediction)
+    write_to_csv(final_pred['label'], ttime, pincode, final_pred['confidence'])
 
     return {"prediction" : final_pred, 'exectime' : ttime}
 
