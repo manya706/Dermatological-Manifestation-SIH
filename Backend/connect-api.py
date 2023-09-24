@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Annotated
 from pydantic import BaseModel
@@ -62,7 +62,7 @@ class ImageInput(BaseModel):
 def write_to_csv(prediction, ttime, pincode, confidence):
     with open('./Backend/predictions.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), prediction, ttime, pincode, confidence])
+        writer.writerow([ttime, pincode, prediction, confidence])
 
 # make a little function here to postprocess the model's output
 # LABEL and FORMAT tensors correctly :)
@@ -104,9 +104,9 @@ async def predict_images(request: ImageInput):
 
 @app.post("/predict-form/")
 async def form_predict(
-    files: Annotated[
-        list[UploadFile], File(description="Multiple files as UploadFile")],
-    pincode: str):
+    files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")],
+    pincode: Annotated[str, Form()]
+    ):
     processed_images = []
     starttime = time.time() # stopwatch start
     
