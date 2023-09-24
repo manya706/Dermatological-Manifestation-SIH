@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('predictions.csv')
+df = pd.read_csv('./Backend/predictions.csv')
 
 disease_color_palette = px.colors.qualitative.Plotly
 disease_to_color = {disease: color for disease, color in zip(df['Prediction'].unique(), disease_color_palette)}
