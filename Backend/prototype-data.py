@@ -38,15 +38,15 @@ for _ in range(60):
     pincode = random.choice(pin_codes)  # Random Indian pin code
     num_diseases = random.randint(1, 10)  # Random number of diseases (up to 5)
     diseases = random.sample(predictions, num_diseases)  # Random diseases from the list
-
+    confidence = random.uniform(93.322, 100) # Random confidence values
     # Append to the rows
     for disease in diseases:
-        rows.append([total_time, pincode, disease])
+        rows.append([total_time, pincode, disease,confidence])
 
 # Write to CSV
 with open('Backend\predictions.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['Total Time (ms)', 'Pincode', 'Prediction'])
+    writer.writerow(['Total Time (ms)', 'Pincode', 'Prediction', 'Confidence'])
     writer.writerows(rows)
 
 # This modified version will randomly assign a variable number of diseases to each pincode, up to a maximum of 5 diseases.
