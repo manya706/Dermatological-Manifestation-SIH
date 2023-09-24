@@ -1,17 +1,13 @@
-
 /**
-* Template Name: Medilab
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Template Name: Medilab
+ * Updated: Sep 18 2023 with Bootstrap v5.3.2
+ * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 
 // Start upload preview image
-$(".gambar").attr(
-  "src",
-  "/assets/img/img-upload.jpg"
-);
+$(".gambar").attr("src", "/assets/img/img-upload.jpg");
 var $uploadCrop, tempFilename, rawImg, imageId;
 function readFile(input) {
   if (input.files && input.files[0]) {
@@ -30,16 +26,16 @@ function readFile(input) {
 $uploadCrop = $("#upload-demo").croppie({
   viewport: {
     width: 500,
-    height: 500
+    height: 500,
   },
   enforceBoundary: false,
-  enableExif: true
+  enableExif: true,
 });
 $("#cropImagePop").on("shown.bs.modal", function () {
   // alert('Shown pop');
   $uploadCrop
     .croppie("bind", {
-      url: rawImg
+      url: rawImg,
     })
     .then(function () {
       console.log("jQuery bind complete");
@@ -57,7 +53,7 @@ $("#cropImageBtn").on("click", function (ev) {
     .croppie("result", {
       type: "base64",
       format: "jpeg",
-      size: { width: 500, height: 500 }
+      size: { width: 500, height: 500 },
     })
     .then(function (resp) {
       $("#item-img-output").attr("src", resp);
@@ -66,51 +62,35 @@ $("#cropImageBtn").on("click", function (ev) {
 });
 // End upload preview image
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Handle form submission when the user clicks the "Submit" button
 $("#imageSelectionForm").on("submit", function (e) {
   // console.log("anujjjjjjjjjjjjjjjjj");
   // alert("2");
   e.preventDefault();
 
-  // Get the selected image filename
-  var selectedImage = $("input[name='selectedImage']:checked").val();
+  // Create an array to hold image1 and image2
+  var imagesArray = [];
 
-  // Get the selected image filename
-  var selectedImage = $("input[name='selectedImage']:checked").val();
+  // Add image1 to the array
+  imagesArray.push($(".item-img")[0].files[0]); // Uploaded image
 
-  // Create a FormData object to store the selected images and pincode as an array
+  // Add image2 to the array
+  var selectedImage = $("input[name='selectedImage']:checked").val(); // Selected image
+  imagesArray.push(selectedImage);
+
+  // Create a FormData object to store the images array and pincode
   var formData = new FormData();
 
-  // Append the uploaded image and selected image as an array under the key "files"
-  formData.append("files[]", $(".item-img")[0].files[0]); // Uploaded image
-  formData.append("files[]", selectedImage); // Selected image
+  // Append the images array to the FormData
+  formData.append("images", JSON.stringify(imagesArray));
 
-  // Add the pincode to the FormData
+  // Add the pincode separately to the FormData
   var pincode = $("#pincode").val();
   formData.append("pincode", pincode);
 
   // Send the FormData object to the server via a POST request
   $.ajax({
-    url: "http://localhost:8000/form-predict", // Replace with your FastAPI endpoint URL
+    url: "/your-api-endpoint-url", // Replace with your FastAPI endpoint URL
     type: "POST",
     data: formData,
     processData: false,
