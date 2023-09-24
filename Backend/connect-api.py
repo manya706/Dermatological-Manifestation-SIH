@@ -102,7 +102,7 @@ async def predict_images(request: ImageInput):
 
     return {"prediction" : final_pred, 'exectime' : ttime}
 
-@app.post("/uploadfiles/")
+@app.post("/predict-form/")
 async def form_predict(
     files: Annotated[
         list[UploadFile], File(description="Multiple files as UploadFile")],
