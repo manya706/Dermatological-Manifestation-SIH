@@ -89,7 +89,7 @@ fetch("assets/img/WEBSITE_SAMPLES/" + selectedImage)
     var formData = new FormData();
     
     // Append the images array to the FormData
-    formData.append("images", ...imagesArray);
+    formData.append("files", ...imagesArray);
     
     // Add the pincode separately to the FormData
     var pincode = $("#pincode").val();
@@ -97,14 +97,17 @@ fetch("assets/img/WEBSITE_SAMPLES/" + selectedImage)
     
     // Send the FormData object to the server via a POST request
     $.ajax({
-        url: "http://localhost:8000/form-predict", // Replace with your FastAPI endpoint URL
+        url: "http://localhost:8000/form-predict/", // Replace with your FastAPI endpoint URL
         type: "POST",
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
             // Handle the response from the server
-            console.log(response);
+            console.log("Label:", response.prediction.label);
+            console.log("Confidence:", response.prediction.confidence);
+            console.log("Execution Time:", response.exectime);
+    
         },
         error: function (error) {
             // Handle any errors

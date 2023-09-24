@@ -28,8 +28,8 @@ origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
     "http://localhost",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
     "*.vercel.app"
 ]
 
@@ -69,9 +69,12 @@ def write_to_csv(prediction, ttime, pincode, confidence):
 def postprocess(pred, labellist=labellist, weight=0.85):
     arg = argmax(pred, axis=1)[0]
     conf_arr = amax(pred, axis=1)
-    confidence = conf_arr[0]*weight + conf_arr[1]*(1 - weight)
+    try:
+        confidence = conf_arr[0]*weight + conf_arr[1]*(1 - weight)
+    except:
+        confidence = conf_arr[0]
     label = labellist[arg]
-    final_pred = {'label' : label, 'confidence' : confidence*100}
+    final_pred = {'label' : label, 'confidence' : (confidence * (1 // confidence))*100}
 
     # write_to_csv(final_pred, request.pincode) 
     return final_pred
@@ -102,7 +105,7 @@ async def predict_images(request: ImageInput):
 
     return {"prediction" : final_pred, 'exectime' : ttime}
 
-@app.post("/predict-form/")
+@app.post("/form-predict/")
 async def form_predict(
     files: Annotated[list[UploadFile], File(description="Multiple files as UploadFile")],
     pincode: Annotated[str, Form()]
@@ -130,12 +133,11 @@ async def form_predict(
     # replace this with a more elaborate argmax function
     final_pred = postprocess(prediction)
     write_to_csv(final_pred['label'], ttime, pincode, final_pred['confidence'])
-
-    return {"prediction" : final_pred, 'exectime' : ttime}
+    y_pred = {"prediction" : final_pred, 'exectime' : ttime}
+    print(y_pred)
+    return y_pred
 
 if __name__ == '__main__':
-    # CODE FOR DEBUG
-    
     # CODE FOR SERVER
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
