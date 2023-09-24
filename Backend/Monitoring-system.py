@@ -9,7 +9,7 @@ disease_to_color = {disease: color for disease, color in zip(df['Prediction'].un
 
 st.sidebar.title("Monitoring System")
 
-selected_page = st.sidebar.selectbox("Select a Page", ["Request Time Graph", "Diseases by Pincode", "Confidence Histogram of Predictions"])
+selected_page = st.sidebar.selectbox("Select a Page", ["Request Time Graph", "Diseases by Pincode", "Confidence Line Chart of Predictions"])
 
 st.title("Monitoring System Visualization")
 
@@ -58,15 +58,15 @@ elif selected_page == "Diseases by Pincode":
     else:
         st.info("Please enter a valid 6-digit numeric pincode.")
 
-elif selected_page == "Confidence Histogram of Predictions":
+elif selected_page == "Confidence Line Chart of Predictions":
     st.write('\n\n')
-    st.header("Confidence Histogram of Predictions")
+    st.header("Confidence Line Chart of Predictions")
 
-    confidence_fig = px.histogram(df, x='Confidence', title='Confidence Histogram')
+    confidence_fig = px.line(df, x=df.index,y='Confidence', title='Confidence Line Chart')
     confidence_fig.update_traces(marker_color='cyan')
     confidence_fig.update_layout(
-        xaxis_title='Confidence',
-        yaxis_title='Count',
+        xaxis_title='Index',
+        yaxis_title='Confidence',
         template='plotly_dark',
     )
     st.plotly_chart(confidence_fig)
