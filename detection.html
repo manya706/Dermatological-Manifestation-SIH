@@ -29,7 +29,7 @@
 
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="assets/css/detection.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 </head>
 
 <body>
@@ -42,12 +42,25 @@
             just upload the photo focussing on the diseased part.</p> -->
         </div>
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-xs-12">
                     <label class="cabinet center-block">
                         <figure>
                             <img width="30%" src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
                             <figcaption><i class="fa fa-camera"></i></figcaption>
+                        </figure>
+                        <input type="file" class="item-img file center-block" name="file_photo" />
+                    </label>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div style="margin: auto; padding: 0;" class="col-xs-12">
+                    <label class="cabinet center-block">
+                        <figure>
+                            <img style="width: 100%;" src="" class="gambar img-responsive img-thumbnail"
+                                id="item-img-output" />
+                            <!-- <figcaption><i class="fa fa-camera"></i></figcaption> -->
                         </figure>
                         <input type="file" class="item-img file center-block" name="file_photo" />
                     </label>
@@ -251,18 +264,22 @@
 
 
         <!-- Pincode input -->
-        <div class="col-md-12 form-group">
-            <h1>Enter Your City Pin Code Here</h1>
-            <input type="text" name="pincode" class="form-control" id="pincode"
-                placeholder="Enter Your City Pin Code Here" data-rule="minlen:4"
-                data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-            <br>
-            <input type="submit" class="dashbtn" value="Submit">
-            <!-- <button type="submit" class="dashbtn">Submit</button> -->
+        <div class="pinc">
+            <div class="col-md-12 form-group">
+                <h1>Enter Your City Pin Code Here</h1>
+                <input type="text" name="pincode" class="form-control" id="pincode"
+                    placeholder="Enter Your City Pin Code Here" data-rule="minlen:4"
+                    data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+                <br>
+                <input type="submit" class="dashbtn" value="Submit">
+                <!-- <button type="submit" class="dashbtn">Submit</button> -->
+            </div>
         </div>
         </form>
-        <p style="margin-top: 100px; text-align: center; font-size: 2rem; font-weight: bold;" class="output">Here Comes the output</p>
+        <div class="outputcont">
+            <p style="text-align: center; font-size: 2rem;" class="output">Here Comes the output</p>
+        </div>
         </div>
         </div>
 
